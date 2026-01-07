@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = "force-static";
+
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
