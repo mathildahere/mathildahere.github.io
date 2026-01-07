@@ -4,13 +4,12 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-sm text-gray-500 leading-relaxed">
           Designed in <span className="text-pink-light">Figma</span> and coded in{' '}
-          <span className="text-pink-light">Visual Studio Code</span> by yours truly.
+          <span className="text-pink-light">Visual Studio Code</span>.
           <br className="hidden sm:block" />
           Built with <span className="text-pink-light">Next.js</span> and{' '}
-          <span className="text-pink-light">Tailwind CSS</span>, deployed with{' '}
-          <span className="text-pink-light">Vercel</span>.
+          <span className="text-pink-light">Tailwind CSS</span>.
           <br className="hidden sm:block" />
-          All text is set in the <span className="text-pink-light">Inter</span> typeface.
+          All text is set in the <span className="text-pink-light">JetBrains Mono</span> typeface.
         </p>
         <p className="text-xs text-gray-600 mt-4">
           © {new Date().getFullYear()} Mathilda Dellanova. All rights reserved.
