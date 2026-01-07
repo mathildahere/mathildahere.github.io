@@ -9,22 +9,19 @@ export default function About() {
         </h2>
         <div className="text-gray-300 space-y-4 leading-relaxed">
           <p>
-            Hello! I'm Mathilda, a passionate software engineer and UI/UX designer based in the digital realm.
-            I specialize in creating beautiful, functional, and user-centered digital experiences that make a difference.
+            Hi, I’m Mathilda — a CS/IS graduate who enjoys working at the intersection of design and technology.
           </p>
           <p>
-            My journey in tech started with a curiosity about how things work behind the screen, and it has evolved
-            into a career dedicated to building elegant solutions to complex problems. I love the intersection of
-            design and development, where aesthetics meet functionality.
+            I’m most comfortable when translating ideas into something tangible: user needs ⟶ interfaces, 
+            designs ⟶ clean code, complex requirements ⟶ systems that actually work in real contexts.
           </p>
           <p>
-            When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source
-            projects, or sharing my knowledge through writing. I believe in continuous learning and staying updated
-            with the latest trends in the ever-evolving tech landscape.
+            I’ve worked in both enterprise and fast-paced project environments, where I learned the importance of clarity, 
+            maintainability, and collaboration. I care deeply about details — not just how something looks, but how it feels to use, 
+            how easy it is to maintain, and how well it supports real workflows.
           </p>
           <p>
-            Currently, I'm focused on building accessible, inclusive products that empower users and create meaningful
-            experiences. Let's connect and create something amazing together!
+            I’m currently looking to grow further and I’m always open to collaborating, learning, and building meaningful things together!
           </p>
         </div>
       </div>
