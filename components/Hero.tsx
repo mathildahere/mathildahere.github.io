@@ -4,9 +4,9 @@ import { FaGithub, FaLinkedin, FaMedium, FaEnvelope } from 'react-icons/fa';
 
 export default function Hero() {
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: FaMedium, href: 'https://medium.com', label: 'Medium' },
+    { icon: FaGithub, href: 'https://github.com/mathildahere', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://linkedin.com/in/mathilda-dellanova', label: 'LinkedIn' },
+    { icon: FaMedium, href: 'https://medium.com/@MathildaDellanova', label: 'Medium' },
     { icon: FaEnvelope, href: 'mailto:mathilda.here@gmail.com', label: 'Email' },
   ];
 
@@ -17,7 +17,7 @@ export default function Hero() {
           <span className="gradient-text">Mathilda Dellanova</span>
         </h1>
         <p className="text-xl sm:text-2xl md:text-3xl text-gray-400 mb-8">
-          Software Engineer and UI/UX Designer
+          UI/UX Designer, Software Engineer 
         </p>
 
         {/* Social Links */}
