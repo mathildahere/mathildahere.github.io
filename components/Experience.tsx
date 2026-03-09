@@ -34,7 +34,7 @@ export default function Experience() {
       position: 'Software Engineer and Lead Designer Intern',
       company: 'Universitas Islam Internasional Indonesia (UIII)',
       description: [
-        'Redesigned end-to-end Faculty&apos;s website with responsive layouts and accessibility best practices',
+        'Redesigned end-to-end Faculty\u2019s website with responsive layouts and accessibility best practices',
         'Deployed a headless Content Management System (CMS), enabling non-technical staff to create, edit, and publish content independently',
       ],
     },

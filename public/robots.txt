@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mathildahere.github.io/sitemap.xml
+Sitemap: https://mathildadellanova.com/sitemap.xml
