@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaDownload } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 export default function Experience() {
   const [showAll, setShowAll] = useState(false);
@@ -9,16 +9,24 @@ export default function Experience() {
   const experiences = [
     {
       id: 1,
-      period: 'Sep 2025 - Present',
-      position: 'Full-stack Developer Apprentice',
-      company: 'LIT Network',
+      period: 'Feb 2026 - Present',
+      position: 'Software Engineer Intern',
+      company: 'CSG International',
       description: [
-        'Selected as one of 3 awardees for the FSD Scholarship Program',
-        'Soon to be SE intern @ CSG (US-based global IT solutions company)',
+        'Working as a Software Engineer Intern at CSG, a US-based global IT solutions company',
       ],
     },
     {
       id: 2,
+      period: 'Sep 2025 - Jan 2026',
+      position: 'Full-stack Developer Apprentice',
+      company: 'LIT Network',
+      description: [
+        'Selected as one of 3 awardees for the FSD Scholarship Program',
+      ],
+    },
+    {
+      id: 3,
       period: 'Jan 2025 - May 2025',
       position: 'Lab Assistant for Programming Foundations II',
       company: 'Faculty of Computer Science, Universitas Indonesia',
@@ -29,7 +37,7 @@ export default function Experience() {
       ],
     },
     {
-      id: 3,
+      id: 4,
       period: 'Feb 2025 - Apr 2025',
       position: 'Software Engineer and Lead Designer Intern',
       company: 'Universitas Islam Internasional Indonesia (UIII)',
@@ -39,7 +47,7 @@ export default function Experience() {
       ],
     },
     {
-      id: 4,
+      id: 5,
       period: 'Mar 2024 - Sep 2024',
       position: 'UI/UX Designer Intern',
       company: 'Asuransi Astra',
@@ -51,7 +59,7 @@ export default function Experience() {
       ],
     },
     {
-      id: 5,
+      id: 6,
       period: 'Jan 2024 - Mar 2024',
       position: 'UX Research Intern',
       company: 'Kawan Kerja',
@@ -61,7 +69,7 @@ export default function Experience() {
       ],
     },
     {
-      id: 6,
+      id: 7,
       period: 'Dec 2023 - Feb 2024',
       position: 'IT Product Staff Intern',
       company: 'Telkom Indonesia',
@@ -131,12 +139,13 @@ export default function Experience() {
 
         <div className="text-center mt-12">
           <a
-            href="/cv.pdf"
-            download
+            href="https://drive.google.com/file/d/1H-ucPEfkZUpNpKsOhJ3t2xvL9lPTxJQn/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-pink-accent to-purple-accent text-white rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-pink-accent/20"
           >
-            <FaDownload />
-            <span>Download CV</span>
+            <FaExternalLinkAlt />
+            <span>View CV</span>
           </a>
         </div>
       </div>

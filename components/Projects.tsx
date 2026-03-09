@@ -1,12 +1,87 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+
+function useInView() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return { ref, inView };
+}
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  tags: string[];
+};
+
+function ProjectsGrid({ projects }: { projects: Project[] }) {
+  const { ref, inView } = useInView();
+  return (
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, i) => (
+        <a
+          key={project.id}
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(24px)',
+            transition: 'opacity 0.5s ease, transform 0.5s ease',
+            transitionDelay: `${i * 0.1}s`,
+          }}
+          className="group bg-dark-card rounded-lg overflow-hidden border border-dark-border hover:border-pink-accent hover:shadow-xl hover:shadow-pink-accent/15 duration-300 transform hover:scale-105"
+        >
+          <div className="relative overflow-hidden aspect-video">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
+              <FaExternalLinkAlt className="text-pink-accent w-5 h-5" />
+            </div>
+          </div>
+          <div className="p-6">
+            <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-accent transition-colors">
+              {project.title}
+            </h3>
+            <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs bg-pink-accent/10 text-pink-light rounded-full border border-pink-accent/20"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: 'NaraTrad',
@@ -29,7 +104,7 @@ export default function Projects() {
       description: 'Web-based IS developed to support administrative processes, survey implementation, and inventory management at one of the biggest survey company in Indonesia.',
       image: '/projects/siap.png',
       link: 'https://youtu.be/rbXwCLVmSEw?si=5yYVdQgpD-RLU5Pv',
-      tags: ['Figma','Django', 'Next.js', 'Railway'],
+      tags: ['Figma', 'Django', 'Next.js', 'Railway'],
     },
     {
       id: 4,
@@ -73,46 +148,8 @@ export default function Projects() {
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
           Featured <span className="gradient-text">Projects</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedProjects.map((project) => (
-            <a
-              key={project.id}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-dark-card rounded-lg overflow-hidden border border-dark-border hover:border-pink-accent hover:shadow-xl hover:shadow-pink-accent/15 transition-all duration-300 transform hover:scale-105"
-            >
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
-                  <FaExternalLinkAlt className="text-pink-accent w-5 h-5" />
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs bg-pink-accent/10 text-pink-light rounded-full border border-pink-accent/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+
+        <ProjectsGrid projects={displayedProjects} />
 
         {projects.length > 3 && (
           <div className="text-center mt-12">
