@@ -34,7 +34,7 @@ export default function Experience() {
       position: 'Software Engineer and Lead Designer Intern',
       company: 'Universitas Islam Internasional Indonesia (UIII)',
       description: [
-        'Redesigned end-to-end Faculty’s website with responsive layouts and accessibility best practices',
+        'Redesigned end-to-end Faculty&apos;s website with responsive layouts and accessibility best practices',
         'Deployed a headless Content Management System (CMS), enabling non-technical staff to create, edit, and publish content independently',
       ],
     },
@@ -79,37 +79,47 @@ export default function Experience() {
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
           Work <span className="gradient-text">Experience</span>
         </h2>
-        <div className="space-y-6">
-          {displayedExperiences.map((exp) => (
-            <div
-              key={exp.id}
-              className="bg-dark-card p-6 rounded-lg border border-dark-border hover:border-pink-accent transition-all duration-300 group"
-            >
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-pink-light group-hover:text-pink-accent transition-colors">
-                    {exp.position}
-                  </h3>
-                  <p className="text-gray-300 font-medium">{exp.company}</p>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-4 top-2 bottom-0 w-px bg-gradient-to-b from-pink-accent via-purple-accent to-transparent" />
+
+          <div className="space-y-8">
+            {displayedExperiences.map((exp) => (
+              <div key={exp.id} className="relative pl-14">
+                {/* Dot */}
+                <div className="absolute left-0 top-1.5 w-8 h-8 rounded-full bg-dark-bg border-2 border-pink-accent flex items-center justify-center group-hover:border-purple-accent transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-br from-pink-accent to-purple-accent" />
                 </div>
-                <span className="text-sm text-gray-400 mt-2 sm:mt-0 whitespace-nowrap">
+
+                {/* Period badge */}
+                <span className="inline-block text-xs text-purple-light bg-purple-accent/10 border border-purple-accent/20 rounded-full px-3 py-1 mb-3">
                   {exp.period}
                 </span>
+
+                {/* Card */}
+                <div className="bg-dark-card p-6 rounded-lg border border-dark-border hover:border-pink-accent hover:shadow-lg hover:shadow-pink-accent/10 transition-all duration-300 group">
+                  <h3 className="text-lg font-semibold text-pink-light group-hover:text-pink-accent transition-colors mb-1">
+                    {exp.position}
+                  </h3>
+                  <p className="text-gray-300 text-sm font-medium mb-4">{exp.company}</p>
+                  <ul className="space-y-2 text-gray-400 text-sm">
+                    {exp.description.map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-pink-accent mr-2 mt-0.5 shrink-0">▹</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <ul className="space-y-2 text-gray-400">
-                {exp.description.map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-pink-accent mr-2 mt-1">▹</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {experiences.length > 3 && (
-          <div className="text-center mt-8">
+          <div className="text-center mt-10 pl-14">
             <button
               onClick={() => setShowAll(!showAll)}
               className="px-8 py-3 bg-pink-accent/10 text-pink-accent border border-pink-accent rounded-lg hover:bg-pink-accent hover:text-white transition-all duration-300 transform hover:scale-105"
@@ -123,7 +133,7 @@ export default function Experience() {
           <a
             href="/cv.pdf"
             download
-            className="inline-flex items-center space-x-2 px-8 py-3 bg-pink-accent text-white rounded-lg hover:bg-pink-dark transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-accent/50"
+            className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-pink-accent to-purple-accent text-white rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-pink-accent/20"
           >
             <FaDownload />
             <span>Download CV</span>

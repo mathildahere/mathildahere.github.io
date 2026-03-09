@@ -1,8 +1,15 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaMedium, FaEnvelope } from 'react-icons/fa';
 
+const roles = ['UI/UX Designer', 'Software Engineer', 'Full-stack Developer', 'Problem Solver'];
+
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const socialLinks = [
     { icon: FaGithub, href: 'https://github.com/mathildahere', label: 'GitHub' },
     { icon: FaLinkedin, href: 'https://linkedin.com/in/mathilda-dellanova', label: 'LinkedIn' },
@@ -10,14 +17,43 @@ export default function Hero() {
     { icon: FaEnvelope, href: 'mailto:mathilda.here@gmail.com', label: 'Email' },
   ];
 
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    const speed = isDeleting ? 50 : 100;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayed(currentRole.slice(0, displayed.length + 1));
+        if (displayed.length + 1 === currentRole.length) {
+          setTimeout(() => setIsDeleting(true), 1800);
+        }
+      } else {
+        setDisplayed(currentRole.slice(0, displayed.length - 1));
+        if (displayed.length - 1 === 0) {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [displayed, isDeleting, roleIndex]);
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-      <div className="max-w-4xl w-full text-center animate-fade-in">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
+      {/* Background orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-pink-accent/20 rounded-full blur-3xl animate-orb-float pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-accent/20 rounded-full blur-3xl animate-orb-float-delay pointer-events-none" />
+      <div className="absolute top-3/4 left-1/3 w-64 h-64 bg-purple-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-4xl w-full text-center animate-fade-in">
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
           <span className="gradient-text">Mathilda Dellanova</span>
         </h1>
-        <p className="text-xl sm:text-2xl md:text-3xl text-gray-400 mb-8">
-          UI/UX Designer, Software Engineer 
+
+        <p className="text-xl sm:text-2xl md:text-3xl mb-8 h-10">
+          <span className="gradient-text-subtle">{displayed}</span>
+          <span className="animate-blink text-pink-accent ml-0.5">|</span>
         </p>
 
         {/* Social Links */}

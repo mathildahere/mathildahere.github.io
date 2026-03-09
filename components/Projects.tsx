@@ -80,7 +80,7 @@ export default function Projects() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-dark-card rounded-lg overflow-hidden border border-dark-border hover:border-pink-accent transition-all duration-300 transform hover:scale-105"
+              className="group bg-dark-card rounded-lg overflow-hidden border border-dark-border hover:border-pink-accent hover:shadow-xl hover:shadow-pink-accent/15 transition-all duration-300 transform hover:scale-105"
             >
               <div className="relative overflow-hidden aspect-video">
                 <img

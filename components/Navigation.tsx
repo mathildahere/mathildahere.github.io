@@ -26,7 +26,9 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark-bg/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled
+          ? 'bg-dark-bg/80 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/30'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +47,7 @@ export default function Navigation() {
                 className="text-gray-300 hover:text-pink-accent transition-colors duration-200 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-accent transition-all duration-200 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-accent to-purple-accent transition-all duration-200 group-hover:w-full"></span>
               </a>
             ))}
           </div>

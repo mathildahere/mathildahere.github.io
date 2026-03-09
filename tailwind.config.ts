@@ -17,10 +17,15 @@ export default {
         'pink-accent': '#ff006e',
         'pink-light': '#ff5c9d',
         'pink-dark': '#cc0058',
+        'purple-accent': '#8b5cf6',
+        'purple-light': '#a78bfa',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
+        'orb-float': 'orbFloat 8s ease-in-out infinite',
+        'orb-float-delay': 'orbFloat 10s ease-in-out infinite 2s',
+        'blink': 'blink 1s step-end infinite',
       },
       keyframes: {
         fadeIn: {
@@ -30,6 +35,15 @@ export default {
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        orbFloat: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '33%': { transform: 'translate(30px, -30px) scale(1.05)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+        },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
       },
     },
