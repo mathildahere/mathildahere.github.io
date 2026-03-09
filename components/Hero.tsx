@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaMedium, FaEnvelope } from 'react-icons/fa';
 
-const roles = ['UI/UX Designer', 'Software Engineer', 'Full-stack Developer', 'Problem Solver'];
+const roles = ['UI/UX Designer', 'Software Engineer', 'Full-stack Developer'];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
